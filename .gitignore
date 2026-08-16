@@ -6,6 +6,9 @@ lovepdf
 lovepdf.exe
 lovepdf-mac
 lovepdf-linux
+kjc-lovepdf
+kjc-lovepdf*
+*.bin
 
 # Go build artifacts
 *.exe

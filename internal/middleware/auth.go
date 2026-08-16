@@ -21,7 +21,7 @@ func BasicAuth(next http.Handler) http.Handler {
 
 		username, password, ok := r.BasicAuth()
 		if !ok {
-			w.Header().Set("WWW-Authenticate", `Basic realm="LovePDF Tool"`)
+			w.Header().Set("WWW-Authenticate", `Basic realm="KJC-lovePDF Tool"`)
 			w.WriteHeader(http.StatusUnauthorized)
 			w.Write([]byte("Authentication required"))
 			return
@@ -32,7 +32,7 @@ func BasicAuth(next http.Handler) http.Handler {
 		passwordMatch := subtle.ConstantTimeCompare([]byte(password), []byte(expectedPassword)) == 1
 
 		if !usernameMatch || !passwordMatch {
-			w.Header().Set("WWW-Authenticate", `Basic realm="LovePDF Tool"`)
+			w.Header().Set("WWW-Authenticate", `Basic realm="KJC-lovePDF Tool"`)
 			w.WriteHeader(http.StatusUnauthorized)
 			w.Write([]byte("Invalid credentials"))
 			return

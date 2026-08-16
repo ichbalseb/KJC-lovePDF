@@ -1,105 +1,210 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full bg-slate-50">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compress GIF - LovePDF</title>
+    <title>Compress GIF - KJC-lovePDF</title>
+    <meta name="description" content="Reduce animated GIF file size with color quantization and frame optimization locally.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1><a href="/">LovePDF</a></h1>
-            <p class="subtitle">Compress GIF</p>
-        </header>
+<body class="flex min-h-full flex-col font-sans antialiased text-slate-900 bg-slate-50 selection:bg-indigo-500 selection:text-white relative">
+    
+    <div class="ambient-glow"></div>
 
-        <main>
-            <div class="upload-area">
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/80 border-b border-slate-200/80">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2.5 group">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-rose-500 via-indigo-600 to-indigo-700 flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition transform">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </div>
+                <span class="text-lg font-bold tracking-tight text-slate-900 group-hover:text-indigo-600 transition">KJC-lovePDF</span>
+            </a>
+
+            <div class="flex items-center gap-2">
+                <a href="https://github.com/ichbalseb/KJC-lovePDF" target="_blank" rel="noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200/80 transition">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    <span>GitHub</span>
+                </a>
+                <a href="/" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200/80 transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                    All Tools
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <main class="flex-1 py-10 sm:py-12 relative z-10">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+            
+            <!-- Tool Header -->
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 mb-3 shadow-sm">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                    </svg>
+                </div>
+                <h1 class="text-3xl font-extrabold tracking-tight text-slate-900">Compress Animated GIF</h1>
+                <p class="text-slate-500 text-sm mt-1.5">Reduce heavy GIF sizes while maintaining smooth animation and crystal clarity.</p>
+            </div>
+
+            <!-- Tool Card -->
+            <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm">
                 <form id="compressGIFForm" enctype="multipart/form-data">
-                    <div class="file-upload">
-                        <input type="file" id="fileInput" name="file" accept="image/gif" required>
-                        <label for="fileInput" class="upload-label">
-                            <span>Choose GIF or drag and drop</span>
-                            <span class="file-types">(GIF files - static or animated)</span>
-                        </label>
+                    
+                    <!-- File Upload Dropzone -->
+                    <div class="upload-area">
+                        <div class="file-upload">
+                            <input type="file" id="fileInput" name="file" accept="image/gif" required>
+                            <label for="fileInput" class="upload-label group">
+                                <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-3 group-hover:scale-110 transition transform">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                                </div>
+                                <span class="text-base font-semibold text-slate-800">Select GIF or drag and drop</span>
+                                <span class="file-types">Supports standard static & animated .gif files</span>
+                            </label>
+                        </div>
                     </div>
 
+                    <!-- Selected File Info -->
                     <div id="fileInfo" class="file-info" style="display: none;"></div>
 
+                    <!-- Live GIF Preview -->
                     <div id="gifPreview" class="image-preview" style="display: none;">
-                        <h3>Preview:</h3>
-                        <img id="previewImg" src="" alt="Preview">
-                        <p id="gifInfo" class="option-hint"></p>
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Animation Preview</h3>
+                        <img id="previewImg" src="" alt="Preview" class="max-h-56 mx-auto rounded-xl shadow-xs border border-slate-200">
+                        <p id="gifInfo" class="text-xs font-semibold text-slate-500 mt-2"></p>
                     </div>
 
+                    <!-- Compression Settings -->
                     <div class="options">
-                        <h3>Compression Settings</h3>
+                        <h3 class="text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
+                            <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+                            GIF Optimization Level
+                        </h3>
 
-                        <div class="option">
-                            <label for="preset">Compression Level:</label>
-                            <select id="preset" name="preset">
-                                <option value="light">Light (128 colors, 90% size)</option>
-                                <option value="medium" selected>Medium (64 colors, 75% size)</option>
-                                <option value="high">High (32 colors, 50% size)</option>
-                                <option value="maximum">Maximum (16 colors, 40% size)</option>
-                                <option value="custom">Custom Settings</option>
-                            </select>
-                        </div>
-
-                        <div id="advancedOptions" style="display: none;">
+                        <div class="space-y-4">
+                            <!-- Preset Dropdown -->
                             <div class="option">
-                                <label for="colorCount">Colors: <span id="colorCountValue">256</span></label>
-                                <input type="range" id="colorCount" name="colorCount" min="2" max="256" value="256" step="2">
-                                <p class="option-hint">Fewer colors = smaller file (GIF max: 256)</p>
-                            </div>
-
-                            <div class="option">
-                                <label for="resizePercent">Size: <span id="resizeValue">100</span>%</label>
-                                <input type="range" id="resizePercent" name="resizePercent" min="10" max="100" value="100">
-                                <p class="option-hint">Reduce dimensions for smaller files</p>
-                            </div>
-
-                            <div class="option">
-                                <input type="checkbox" id="optimizeFrames" name="optimizeFrames" value="true" checked>
-                                <label for="optimizeFrames">Optimize animation frames</label>
-                                <p class="option-hint">Remove redundant pixels between frames</p>
-                            </div>
-
-                            <div class="option">
-                                <label for="frameSkip">Skip frames:</label>
-                                <select id="frameSkip" name="frameSkip">
-                                    <option value="0">Keep all frames</option>
-                                    <option value="1">Skip every 2nd frame</option>
-                                    <option value="2">Skip every 3rd frame</option>
-                                    <option value="3">Skip every 4th frame</option>
+                                <label for="preset" class="font-semibold text-slate-800 block text-sm mb-1">Compression Preset</label>
+                                <select id="preset" name="preset">
+                                    <option value="light">Light (128 colors • ~90% original size)</option>
+                                    <option value="medium" selected>Medium (64 colors • ~75% original size - Recommended)</option>
+                                    <option value="high">High (32 colors • ~50% original size)</option>
+                                    <option value="maximum">Maximum (16 colors • ~40% original size)</option>
+                                    <option value="custom">Custom Advanced Settings...</option>
                                 </select>
-                                <p class="option-hint">Reduces animation smoothness but decreases file size</p>
                             </div>
 
-                            <div class="option">
-                                <label for="lossyLevel">Lossy compression: <span id="lossyValue">0</span>%</label>
-                                <input type="range" id="lossyLevel" name="lossyLevel" min="0" max="100" value="0">
-                                <p class="option-hint">Higher = more compression, more artifacts</p>
+                            <!-- Advanced Custom Controls -->
+                            <div id="advancedOptions" style="display: none;" class="space-y-3 pt-2">
+                                <div class="option">
+                                    <div class="flex items-center justify-between">
+                                        <label for="colorCount" class="font-semibold text-slate-800 text-sm">Palette Colors</label>
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800"><span id="colorCountValue">256</span> colors</span>
+                                    </div>
+                                    <input type="range" id="colorCount" name="colorCount" min="2" max="256" value="256" step="2">
+                                    <p class="option-hint">Fewer colors creates significantly smaller GIFs (Max: 256).</p>
+                                </div>
+
+                                <div class="option">
+                                    <div class="flex items-center justify-between">
+                                        <label for="resizePercent" class="font-semibold text-slate-800 text-sm">Dimensions Scaling</label>
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800"><span id="resizeValue">100</span>%</span>
+                                    </div>
+                                    <input type="range" id="resizePercent" name="resizePercent" min="10" max="100" value="100">
+                                </div>
+
+                                <div class="option">
+                                    <label for="optimizeFrames" class="flex items-center gap-3 cursor-pointer">
+                                        <input type="checkbox" id="optimizeFrames" name="optimizeFrames" value="true" checked class="text-amber-600 focus:ring-amber-500 rounded">
+                                        <div>
+                                            <span class="font-semibold text-slate-800 block text-sm">Optimize Inter-Frame Differences</span>
+                                            <span class="text-xs text-slate-500">Removes redundant pixels between static frames.</span>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                <div class="option">
+                                    <label for="frameSkip" class="font-semibold text-slate-800 block text-sm mb-1">Frame Decimation (Skip)</label>
+                                    <select id="frameSkip" name="frameSkip">
+                                        <option value="0">Retain all animation frames</option>
+                                        <option value="1">Skip every 2nd frame (Halves frame count)</option>
+                                        <option value="2">Skip every 3rd frame</option>
+                                        <option value="3">Skip every 4th frame</option>
+                                    </select>
+                                </div>
+
+                                <div class="option">
+                                    <div class="flex items-center justify-between">
+                                        <label for="lossyLevel" class="font-semibold text-slate-800 text-sm">Lossy LZW Compression</label>
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800"><span id="lossyValue">0</span>%</span>
+                                    </div>
+                                    <input type="range" id="lossyLevel" name="lossyLevel" min="0" max="100" value="0">
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary" id="submitBtn" disabled>Compress GIF</button>
+                    <!-- Action Button -->
+                    <button type="submit" class="btn btn-primary" id="submitBtn" disabled>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        Compress GIF Now
+                    </button>
                 </form>
+
+                <!-- Processing Progress -->
+                <div id="progress" class="progress" style="display: none;">
+                    <div class="progress-bar"></div>
+                    <p class="progress-text">Quantizing GIF frames & compressing palette...</p>
+                </div>
+
+                <!-- Result Card -->
+                <div id="result" class="result" style="display: none;"></div>
             </div>
 
-            <div id="progress" class="progress" style="display: none;">
-                <div class="progress-bar"></div>
-                <p class="progress-text">Compressing GIF...</p>
+            <!-- How it Works Guide -->
+            <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center text-xs text-slate-500">
+                <div class="p-4 rounded-2xl bg-white/70 border border-slate-200/60">
+                    <span class="font-bold text-slate-700 block mb-1">1. Choose GIF</span>
+                    Select animated or static GIF.
+                </div>
+                <div class="p-4 rounded-2xl bg-white/70 border border-slate-200/60">
+                    <span class="font-bold text-slate-700 block mb-1">2. Select Preset</span>
+                    Pick compression balance.
+                </div>
+                <div class="p-4 rounded-2xl bg-white/70 border border-slate-200/60">
+                    <span class="font-bold text-slate-700 block mb-1">3. Download</span>
+                    Instant lightweight GIF output.
+                </div>
             </div>
 
-            <div id="result" class="result" style="display: none;"></div>
-        </main>
+        </div>
+    </main>
 
-        <footer>
-            <a href="/">← Back to Home</a>
-        </footer>
-    </div>
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        <p>100% Local processing on your device • No server storage</p>
+    </footer>
+
     <script src="/static/js/app.js"></script>
 </body>
 </html>

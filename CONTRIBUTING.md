@@ -1,11 +1,11 @@
-# Contributing to LovePDF
+# Contributing to KJC-lovePDF
 
-Thank you for considering contributing to LovePDF. This document outlines the process for contributing to this project.
+Thank you for considering contributing to KJC-lovePDF. This document outlines the process for contributing to this project.
 
 ## Getting Started
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/yourusername/lovepdf.git`
+2. Clone your fork: `git clone https://github.com/yourusername/KJC-lovePDF.git`
 3. Create a feature branch: `git checkout -b feature-name`
 4. Make your changes
 5. Test your changes locally
@@ -18,8 +18,8 @@ Thank you for considering contributing to LovePDF. This document outlines the pr
 ```bash
 # Install Go 1.24 or higher
 # Clone the repository
-git clone https://github.com/yourusername/lovepdf.git
-cd lovepdf
+git clone https://github.com/ichbalseb/KJC-lovePDF.git
+cd KJC-lovePDF
 
 # Install dependencies
 go mod download
@@ -28,7 +28,7 @@ go mod download
 go run cmd/server/main.go
 
 # Build
-go build -o lovepdf cmd/server/main.go
+go build -o kjc-lovepdf cmd/server/main.go
 ```
 
 ## Code Style
@@ -43,7 +43,7 @@ go build -o lovepdf cmd/server/main.go
 ## Project Structure
 
 ```
-lovepdf/
+KJC-lovePDF/
 ├── cmd/server/          # Application entry point
 ├── internal/            # Internal packages
 │   ├── handlers/        # HTTP handlers

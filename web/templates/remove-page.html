@@ -1,56 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full bg-slate-50">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remove Page - LovePDF</title>
+    <title>Remove Pages - KJC-lovePDF</title>
+    <meta name="description" content="Remove specific unwanted pages from your PDF files locally and securely.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1><a href="/">LovePDF</a></h1>
-            <p class="subtitle">Remove Pages from PDF</p>
-        </header>
+<body class="flex min-h-full flex-col font-sans antialiased text-slate-900 bg-slate-50 selection:bg-indigo-500 selection:text-white relative">
+    
+    <div class="ambient-glow"></div>
 
-        <main>
-            <div class="upload-area">
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/80 border-b border-slate-200/80">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2.5 group">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-rose-500 via-indigo-600 to-indigo-700 flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition transform">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </div>
+                <span class="text-lg font-bold tracking-tight text-slate-900 group-hover:text-indigo-600 transition">KJC-lovePDF</span>
+            </a>
+
+            <div class="flex items-center gap-2">
+                <a href="https://github.com/ichbalseb/KJC-lovePDF" target="_blank" rel="noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200/80 transition">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    <span>GitHub</span>
+                </a>
+                <a href="/" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200/80 transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                    All Tools
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <main class="flex-1 py-10 sm:py-12 relative z-10">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+            
+            <!-- Tool Header -->
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-fuchsia-50 text-fuchsia-600 mb-3 shadow-sm">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                    </svg>
+                </div>
+                <h1 class="text-3xl font-extrabold tracking-tight text-slate-900">Remove PDF Pages</h1>
+                <p class="text-slate-500 text-sm mt-1.5">Discard unwanted or blank pages from your PDF files with simple comma lists or ranges.</p>
+            </div>
+
+            <!-- Tool Card -->
+            <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm">
                 <form id="removePageForm" enctype="multipart/form-data">
-                    <div class="file-upload">
-                        <input type="file" id="fileInput" name="file" accept=".pdf" required>
-                        <label for="fileInput" class="upload-label">
-                            <span>Choose PDF or drag and drop</span>
-                        </label>
+                    
+                    <!-- File Upload Dropzone -->
+                    <div class="upload-area">
+                        <div class="file-upload">
+                            <input type="file" id="fileInput" name="file" accept=".pdf" required>
+                            <label for="fileInput" class="upload-label group">
+                                <div class="w-12 h-12 rounded-2xl bg-fuchsia-50 text-fuchsia-600 flex items-center justify-center mb-3 group-hover:scale-110 transition transform">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                </div>
+                                <span class="text-base font-semibold text-slate-800">Select PDF or drag and drop</span>
+                                <span class="file-types">Supports standard .pdf documents</span>
+                            </label>
+                        </div>
                     </div>
 
+                    <!-- Selected File Info -->
                     <div id="fileInfo" class="file-info" style="display: none;"></div>
 
+                    <!-- Options -->
                     <div class="options">
-                        <h3>Pages to Remove</h3>
+                        <h3 class="text-base font-bold text-slate-900 mb-3 flex items-center gap-2">
+                            <svg class="w-4 h-4 text-fuchsia-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                            Pages to Delete
+                        </h3>
+
                         <div class="option">
-                            <input type="text" id="pageRangeInput" name="pageRange" placeholder="e.g., 1,3,5 or 1-3,5,7-9" required style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                            <label for="pageRangeInput" class="text-xs font-semibold text-slate-700 block mb-1">Page Numbers or Ranges</label>
+                            <input type="text" id="pageRangeInput" name="pageRange" placeholder="e.g., 1, 3, 5-8" required class="text-sm">
+                            <p class="option-hint">Enter single page numbers separated by commas, or page intervals (e.g. 2-4, 7).</p>
                         </div>
-                        <p style="color: #666; font-size: 14px; margin-top: 8px;">
-                            Enter page numbers separated by commas or use ranges (e.g., "1,3,5" or "1-3,5,7-9").
-                        </p>
                     </div>
 
-                    <button type="submit" class="btn btn-primary" id="submitBtn" disabled>Remove Pages</button>
+                    <!-- Action Button -->
+                    <button type="submit" class="btn btn-primary" id="submitBtn" disabled>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                        Remove Selected Pages
+                    </button>
                 </form>
+
+                <!-- Processing Progress -->
+                <div id="progress" class="progress" style="display: none;">
+                    <div class="progress-bar"></div>
+                    <p class="progress-text">Trimming specified pages locally...</p>
+                </div>
+
+                <!-- Result Card -->
+                <div id="result" class="result" style="display: none;"></div>
             </div>
 
-            <div id="progress" class="progress" style="display: none;">
-                <div class="progress-bar"></div>
-                <p class="progress-text">Removing pages...</p>
+            <!-- How it Works Guide -->
+            <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center text-xs text-slate-500">
+                <div class="p-4 rounded-2xl bg-white/70 border border-slate-200/60">
+                    <span class="font-bold text-slate-700 block mb-1">1. Choose File</span>
+                    Select your PDF document.
+                </div>
+                <div class="p-4 rounded-2xl bg-white/70 border border-slate-200/60">
+                    <span class="font-bold text-slate-700 block mb-1">2. Enter Numbers</span>
+                    Specify which pages to delete.
+                </div>
+                <div class="p-4 rounded-2xl bg-white/70 border border-slate-200/60">
+                    <span class="font-bold text-slate-700 block mb-1">3. Download</span>
+                    Get clean trimmed document.
+                </div>
             </div>
 
-            <div id="result" class="result" style="display: none;"></div>
-        </main>
+        </div>
+    </main>
 
-        <footer>
-            <a href="/">← Back to Home</a>
-        </footer>
-    </div>
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        <p>100% Local processing on your device • No server storage</p>
+    </footer>
+
     <script src="/static/js/app.js"></script>
 </body>
 </html>
